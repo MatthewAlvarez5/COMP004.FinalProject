@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using COMP004.FinalProject.Data;
+
 namespace COMP004.FinalProject
 {
     public class Program
@@ -8,6 +11,10 @@ namespace COMP004.FinalProject
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Set up the database context.
+            builder.Services.AddDbContext<WebDevAcademyContext>(options =>
+                options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
 
             var app = builder.Build();
 
