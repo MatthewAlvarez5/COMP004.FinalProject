@@ -172,9 +172,8 @@ namespace COMP004.FinalProject.Migrations
                 {
                     RatingId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    GameName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    RatingNum = table.Column<int>(type: "int", nullable: false),
-                    GameId = table.Column<int>(type: "int", nullable: true)
+                    GameId = table.Column<int>(type: "int", nullable: false),
+                    RatingNum = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -183,7 +182,8 @@ namespace COMP004.FinalProject.Migrations
                         name: "FK_Ratings_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
-                        principalColumn: "GameId");
+                        principalColumn: "GameId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
